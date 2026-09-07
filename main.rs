@@ -50,7 +50,7 @@ fn main() {
     println!("{:.2}", shape.area());*/
 
     // Test 04
-    let stdin = io::stdin();
+    /*let stdin = io::stdin();
     let mut line = String::new();
     stdin.lock().read_line(&mut line).unwrap();
     let numbers = line.split_whitespace();
@@ -60,7 +60,18 @@ fn main() {
         .map(|n| n * n)
         .sum();
 
-    println!("{}", sum_squares);
+    println!("{}", sum_squares);*/
+
+    // Test 05
+    let stdin = io::stdin();
+    let mut lines = stdin.lock().lines();
+    let a = lines.next().unwrap().unwrap();
+    let b = lines.next().unwrap().unwrap();
+
+    match parse_two(&a, &b) {
+        Ok(v) => println!("sum: {}", v),
+        Err(_) => println!("error: invalid input")
+    }
 
 }
 
@@ -74,4 +85,11 @@ fn longer<'t>(a: &'t str, b: &'t str) -> &'t str {
     } else {
         return b
     }
+}
+
+fn parse_two(a: &str, b: &str) -> Result<i32, std::num::ParseIntError> {
+    let num_a = a.parse::<i32>()?;
+    let num_b = b.parse::<i32>()?;
+
+    Ok(num_a + num_b)
 }
