@@ -1,6 +1,8 @@
 use std::io::{self, BufRead, Read, stdin};
 use std::cell::RefCell;
 use std::rc::Rc;
+use std::sync::{Arc, Mutex};
+use std::thread;
 
 trait Shape { fn area(&self) -> f64; }
 struct Circle { radius: f64 }
@@ -104,7 +106,8 @@ fn main() {
         println!("{}", c());
     }*/
 
-    let stdin = io::stdin();
+    // Test 08
+    /*let stdin = io::stdin();
     let mut lines = stdin.lock().lines();
     let kind: String = lines.next().unwrap().unwrap();
     let dim: f64 = lines.next().unwrap().unwrap().trim().parse().unwrap();
@@ -115,7 +118,22 @@ fn main() {
         geometry::square_area(dim)
     };
 
-    println!("{:.2}", area)
+    println!("{:.2}", area)*/
+
+    // Test 09
+    let counter = Arc::new(Mutex::new(0));
+    let mut handlers = vec![];
+
+    for _ in 0..4 {
+        let counter = Arc::clone(&counter);
+        handlers.push(thread::spawn(move || {
+            let mut c = counter.lock().unwrap();
+            *c += 250;
+        }));
+    }
+
+    for h in handlers { h.join().unwrap(); }
+    println!("{}", *counter.lock().unwrap());
 
 
 }
