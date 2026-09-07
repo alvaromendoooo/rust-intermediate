@@ -34,23 +34,23 @@ mod geometry {
 fn main() {
     
     // Test 01
-    /*let stdin = io::stdin();
+    let stdin = io::stdin();
     let mut line = String::new();
     stdin.lock().read_line(&mut line).unwrap();
     let mut s = line.trim().to_string();
     append_excl(&mut s);
-    println!("{}", s);*/
+    println!("{}", s);
 
     // Test 02
-    /*let stdin = io::stdin();
+    let stdin = io::stdin();
     let mut lines = stdin.lock().lines();
     let a = lines.next().unwrap().unwrap();
     let b = lines.next().unwrap().unwrap();
 
-    println!("{}", longer(&a, &b));*/
+    println!("{}", longer(&a, &b));
 
     // Test 03
-    /*let stdin = io::stdin();
+    let stdin = io::stdin();
     let mut lines = stdin.lock().lines();
     let kind = lines.next().unwrap().unwrap();
     let dim: f64 = lines.next().unwrap().unwrap().parse().unwrap();
@@ -61,10 +61,10 @@ fn main() {
         Box::new(Square { side: dim })
     };
 
-    println!("{:.2}", shape.area());*/
+    println!("{:.2}", shape.area());
 
     // Test 04
-    /*let stdin = io::stdin();
+    let stdin = io::stdin();
     let mut line = String::new();
     stdin.lock().read_line(&mut line).unwrap();
     let numbers = line.split_whitespace();
@@ -74,10 +74,10 @@ fn main() {
         .map(|n| n * n)
         .sum();
 
-    println!("{}", sum_squares);*/
+    println!("{}", sum_squares);
 
     // Test 05
-    /*let stdin = io::stdin();
+    let stdin = io::stdin();
     let mut lines = stdin.lock().lines();
     let a = lines.next().unwrap().unwrap();
     let b = lines.next().unwrap().unwrap();
@@ -85,29 +85,29 @@ fn main() {
     match parse_two(&a, &b) {
         Ok(v) => println!("sum: {}", v),
         Err(_) => println!("error: invalid input")
-    }*/
+    }
 
     // Test 06
-    /*let counter = Rc::new(RefCell::new(0));
+    let counter = Rc::new(RefCell::new(0));
     let a = Rc::clone(&counter);
     let b = Rc::clone(&counter);
 
     *a.borrow_mut() += 1;
     *b.borrow_mut() += 1;
 
-    println!("{}", counter.borrow());*/
+    println!("{}", counter.borrow());
 
     // Test 07
-    /*let mut input = String::new();
+    let mut input = String::new();
     std::io::stdin().read_to_string(&mut input).unwrap();
     let n: usize = input.split_whitespace().next().unwrap().parse().unwrap();
     let mut c = make_counter();
     for _ in 0..n {
         println!("{}", c());
-    }*/
+    }
 
     // Test 08
-    /*let stdin = io::stdin();
+    let stdin = io::stdin();
     let mut lines = stdin.lock().lines();
     let kind: String = lines.next().unwrap().unwrap();
     let dim: f64 = lines.next().unwrap().unwrap().trim().parse().unwrap();
@@ -118,7 +118,7 @@ fn main() {
         geometry::square_area(dim)
     };
 
-    println!("{:.2}", area)*/
+    println!("{:.2}", area);
 
     // Test 09
     let counter = Arc::new(Mutex::new(0));
@@ -134,7 +134,6 @@ fn main() {
 
     for h in handlers { h.join().unwrap(); }
     println!("{}", *counter.lock().unwrap());
-
 
 }
 
