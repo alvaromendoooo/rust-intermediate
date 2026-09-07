@@ -36,7 +36,7 @@ fn main() {
     println!("{}", longer(&a, &b));*/
 
     // Test 03
-    let stdin = io::stdin();
+    /*let stdin = io::stdin();
     let mut lines = stdin.lock().lines();
     let kind = lines.next().unwrap().unwrap();
     let dim: f64 = lines.next().unwrap().unwrap().parse().unwrap();
@@ -47,7 +47,20 @@ fn main() {
         Box::new(Square { side: dim })
     };
 
-    println!("{:.2}", shape.area());
+    println!("{:.2}", shape.area());*/
+
+    // Test 04
+    let stdin = io::stdin();
+    let mut line = String::new();
+    stdin.lock().read_line(&mut line).unwrap();
+    let numbers = line.split_whitespace();
+
+    let sum_squares: i32 = numbers.map(|n| n.parse::<i32>().unwrap())
+        .filter(|n| *n % 2 == 0)
+        .map(|n| n * n)
+        .sum();
+
+    println!("{}", sum_squares);
 
 }
 
