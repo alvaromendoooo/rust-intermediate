@@ -1,4 +1,6 @@
 use std::io::{self, BufRead, stdin};
+use std::cell::RefCell;
+use std::rc::Rc;
 
 trait Shape { fn area(&self) -> f64; }
 struct Circle { radius: f64 }
@@ -63,7 +65,7 @@ fn main() {
     println!("{}", sum_squares);*/
 
     // Test 05
-    let stdin = io::stdin();
+    /*let stdin = io::stdin();
     let mut lines = stdin.lock().lines();
     let a = lines.next().unwrap().unwrap();
     let b = lines.next().unwrap().unwrap();
@@ -71,7 +73,18 @@ fn main() {
     match parse_two(&a, &b) {
         Ok(v) => println!("sum: {}", v),
         Err(_) => println!("error: invalid input")
-    }
+    }*/
+
+    // Test 08
+    let counter = Rc::new(RefCell::new(0));
+    let a = Rc::clone(&counter);
+    let b = Rc::clone(&counter);
+
+    *a.borrow_mut() += 1;
+    *b.borrow_mut() += 1;
+
+    println!("{}", counter.borrow());
+
 
 }
 
